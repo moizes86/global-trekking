@@ -4,15 +4,14 @@
   align-items: center;
   flex-wrap: wrap;
 
-  :target {
-    padding-top: 120px;
-  }
 
-  & > p {
-    padding: 0 20px;
-    font-family: sans-serif;
-    line-height: 2;
+  &:target{
   }
+  // & > p {
+  //   padding: 0 20px;
+  //   font-family: sans-serif;
+  //   line-height: 2;
+  // }
 
   .img-container {
     display: flex;

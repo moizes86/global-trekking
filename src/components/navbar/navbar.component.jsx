@@ -3,33 +3,45 @@ import { useEffect } from "react";
 import "./navbar.styles.scss";
 
 const Navbar = () => {
-  const [navbarShown, setNavbarShown] = useState(false);
-  const [navBgActive, setNavBgActive] = useState("");
+  const [navOpen, toggleNav] = useState(false);
+  const [navBgActive, toggleNavBackgroundColor] = useState(false);
 
   useEffect(() => {
     const getPageOffset = () => {
-      return window.pageYOffset > 100
-        ? setNavBgActive("bg-color-active")
-        : setNavBgActive("");
+      window.pageYOffset > 50 ? toggleNavBackgroundColor(true) : toggleNavBackgroundColor(false);
     };
 
     window.addEventListener("scroll", getPageOffset);
   });
 
   return (
-    <nav className={`${navBgActive}`}>
+    <nav className={`${navBgActive ? "bg-color-active" : ""}`}>
       <ul>
         {/**LOGO */}
         <li className="website-logo">
           <a href="/#">
-            <img src={process.env.PUBLIC_URL + "fuji-mountain.svg"} alt="" />
+            <img src={process.env.PUBLIC_URL + "gt-logo.jpg"} alt="" />
           </a>
         </li>
-        
+
+        {/** Hamburger */}
+        <li
+          className={`hamburger `}
+          onClick={() => {
+            toggleNav(!navOpen);
+            navOpen? toggleNavBackgroundColor(false): toggleNavBackgroundColor(true)
+          }}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </li>
+
         {/** ITEMS */}
         <li
-          className={`li-items ${navbarShown ? `show ` : ""}`}
-          onClick={() => setNavbarShown(false)}
+          style={{ display: navOpen ? "flex" : "" }}
+          className={`li-items display-none ${navBgActive}`}
+          onClick={() => toggleNav(!navOpen)}
         >
           <div>
             <a href="#about-us">About Us</a>
@@ -43,13 +55,6 @@ const Navbar = () => {
           <div>
             <a href="#subscribe">Updates And Offers</a>
           </div>
-        </li>
-        
-        {/** Hamburger */}
-        <li className="hamburger" onClick={() => setNavbarShown(!navbarShown)}>
-          <div></div>
-          <div></div>
-          <div></div>
         </li>
       </ul>
     </nav>

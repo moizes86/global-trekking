@@ -1,8 +1,13 @@
-$nav-bg-color: #228aa9f1;
+// $nav-bg-color: #228aa9f1;
+$nav-bg-color: rgba(0, 0, 0, 0.9);
 
 .bg-color-active {
   background-color: $nav-bg-color;
-  transition: background-color 0.15s ease-out;
+  transition: 0.2s;
+}
+
+.display-none{
+  display:none;
 }
 
 nav {
@@ -10,15 +15,12 @@ nav {
   top: 0;
   width: 100%;
   z-index: 2;
-  transition: background-color 0.15s linear;
-
-  @media screen and (max-width: 640px) {
-    background-color: $nav-bg-color;
-  }
 
   ul {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
     font-size: 16px;
     opacity: 0;
@@ -35,11 +37,7 @@ nav {
     }
 
     @media screen and (max-width: 640px) {
-      
       justify-content: space-between;
-      .show {
-        transform: translateY(301px);
-      }
     }
 
     li {
@@ -56,13 +54,13 @@ nav {
     //   HAMBURGER
     .hamburger {
       display: none;
+
       div {
         border-bottom: 4px solid white;
         border-radius: 10px;
       }
 
-      @media screen and (max-width: 640px) {
-        display: block;
+      @media screen and (max-width: 700px) {
         width: 30px;
         height: 30px;
         display: flex;
@@ -73,15 +71,13 @@ nav {
 
     //  LOGO
     .website-logo {
-      li {
-        img {
-          margin-top: -10px;
-          height: 50px;
-          border-radius: 50%;
+      img {
+        border-radius: 50%;
+        height: 70px;
 
-          @media screen and (max-width: 640px) {
-            margin-left: -20px;
-          }
+        @media screen and (max-width: 640px) {
+          // margin-left: -20px;
+          height: 50px;
         }
       }
     }
@@ -89,23 +85,18 @@ nav {
     //   NAV ITEMS
     .li-items {
       display: flex;
-      flex-direction: row;
       flex-grow: 1;
       justify-content: flex-end;
-      align-items: center;
 
-      @media screen and (max-width: 640px) {
-        position: absolute;
+      @media screen and (max-width: 700px) {
         width: 100vw;
-        height: 35vh;
+        height: 30vh;
         left: 0;
-        top: -38vh;
-        background-color: $nav-bg-color;
         font-size: 1.3rem;
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: space-evenly;
-        transition: 0.35s;
+        transition: 0.2s;
         z-index: -1;
       }
     }

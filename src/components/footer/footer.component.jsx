@@ -3,7 +3,7 @@ import "./footer.styles.scss";
 
 const Footer = () => {
   return (
-    <div className="section footer">
+    <div className="footer">
       <ul>
         <li>
           <a
